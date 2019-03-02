@@ -1,0 +1,9 @@
+h1{
+    width: 100%;
+    background-color: blueviolet;
+    color: white;
+};
+
+body{
+    background-image: url("../images/background.png");
+}
