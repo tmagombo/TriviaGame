@@ -17,6 +17,13 @@ h3{
     
 }
 
+h3:hover{   
+    background-color: white;
+    color: blue;
+    cursor:crosshair;
+
+}
+
 h2{
     color: rebeccapurple;
     text-align: center;

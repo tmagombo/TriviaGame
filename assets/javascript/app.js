@@ -55,11 +55,11 @@ function questionTimer() {
 };
 
 function startGame() {
-    count = 8;
+    count = 0;
     goTime();
-    $("#pick").hide();
     qCorrect = 0;
     qIncorrect = 0;
+    $("#pick").text("Pick the country this flag belongs to...");
 };
 function goTime(){
     if(count!==10){
@@ -68,9 +68,10 @@ function goTime(){
     
 }
     else{
-    setTimeout(startGame, 8000);
     $("#pick").text("Congrats on completing the game! You got "+ qCorrect +" questions right and "+ qIncorrect +" wrong. Good Work!")
-
+    $("#right").hide();
+    $("#wrong").hide();
+    setTimeout(startGame, 8000);
 };
 };
 
@@ -78,24 +79,44 @@ function startTimer() {
     time--;
     $("#timer").text(time + " seconds left");
     $("#timer").show();
-    if (time === 0) {
+    if (time === -1) {
+        stopTimer();
+
+    }
+    if (time === -2) {
         stopTimer();
     }
 };
 
 
 function stopTimer() {
+    if (time === -1) {
+        clearInterval(intervalId);
+        wrongAn();
+        $("#timer").hide();
+        $("#question").hide();
+        count++;    
+        time+=21;
+        setTimeout(goTime, 2000);
+        $("#answer1").hide();
+        $("#answer2").hide();
+        $("#answer3").hide();
+        $("#answer4").hide();
+        $("#answer4").hide();
+    }
+    if (time === -2) {
     clearInterval(intervalId);
     $("#timer").hide();
     $("#question").hide();
     count++;    
-    time+=20;
+    time+=21;
     setTimeout(goTime, 2000);
     $("#answer1").hide();
     $("#answer2").hide();
     $("#answer3").hide();
     $("#answer4").hide();
     $("#answer4").hide();
+    }
     };
 
 function displayQuestion() {
@@ -112,7 +133,7 @@ function displayAnswers(){
     $("#right").hide();
     $("#wrong").hide();
 
-        
+    
 
 if(count===0){
 
@@ -247,28 +268,27 @@ if(count===9){
 };
 
 if(count>9){    
-    $("#pick").show();
     $("#question").hide();
     stopTimer();
     $("#answer1").hide();
     $("#answer2").hide();
     $("#answer3").hide();
     $("#answer4").hide();    
-
+    
 };
-
+};
 $("h3").click(function(){
   if(count===0){
       if(this.id==="answer1"){
-          console.log("right")
-          ;
-          time=1;
+          
+         
+          time=-1;
           rightAn();
 
       }
       else {
 
-        time=1;
+        time=-1;
         wrongAn();
 
       };
@@ -276,15 +296,15 @@ $("h3").click(function(){
   };
   if(count===1){
     if(this.id==="answer3"){
-        console.log("right")
-        ;
-        time=1;
+        
+       
+        time=-1;
         rightAn();
 
     }
     else {
-      ;
-      time=1;
+     
+      time=-1;
       wrongAn();
 
     };
@@ -292,15 +312,14 @@ $("h3").click(function(){
 };
 if(count===2){
     if(this.id==="answer4"){
-        console.log("right")
-        ;
-        time=1;
+        
+        time=-1;
         rightAn();
 
     }
     else {
-      ;
-      time=1;
+     
+      time=-1;
       wrongAn();
 
     };
@@ -308,15 +327,15 @@ if(count===2){
 };
 if(count===3){
     if(this.id==="answer1"){
-        console.log("right")
-        ;
-        time=1;
+        
+    
+        time=-1;
         rightAn();
 
     }
     else {
-      ;
-      time=1;
+     
+      time=-1;
       wrongAn();
 
     };
@@ -324,15 +343,15 @@ if(count===3){
 };
 if(count===4){
     if(this.id==="answer2"){
-        console.log("right")
-        ;
-        time=1;
+        
+       
+        time=-1;
         rightAn();
 
     }
     else {
-      ;
-      time=1;
+     
+      time=-1;
       wrongAn();
 
     };
@@ -340,15 +359,15 @@ if(count===4){
 };
 if(count===5){
     if(this.id==="answer4"){
-        console.log("right")
-        ;
-        time=1;      
+        
+       
+        time=-1;      
         rightAn();
 
     }
     else {
-      ;
-      time=1;
+     
+      time=-1;
       wrongAn();
 
     };
@@ -356,15 +375,15 @@ if(count===5){
 };
 if(count===6){
     if(this.id==="answer3"){
-        console.log("right")
-        ;
-        time=1;
+        
+       
+        time=-1;
         rightAn();
 
     }
     else {
-      ;
-      time=1;
+     
+      time=-1;
       wrongAn();
 
     };
@@ -373,15 +392,15 @@ if(count===6){
 
 if(count===7){
     if(this.id==="answer2"){
-        console.log("right")
-        ;
-        time=1;
+        
+       
+        time=-1;
         rightAn();
 
     }
     else {
-      ;
-      time=1;
+     
+      time=-1;
       wrongAn();
 
     };
@@ -391,42 +410,41 @@ if(count===7){
 if(count===8){
     if(this.id==="answer1"){
     
-        time=1;
+        time=-1;
         rightAn();
 
     }
     else {
-      ;
-      time=1;
+     
+      time=-1;
       wrongAn();
+
     };
 
 };
 
 if(count===9){
     if(this.id==="answer2"){
-        ;
-        time=1;
+        time=-1;
         rightAn();
-        console.log(qCorrect);
     }
     else {
-      ;
-      time=1;
-      wrongAn();
+     
+      time=-1;
+    wrongAn();
+
     };
 
 };
 
 });
-};
 
 function rightAn(){
     $("#gamebox2").append("<h2 id='right'>")
     $("#right").text("You got it right!!!!")
     $("#right").show();
     qCorrect++;
-    console.log(qCorrect + "hi");
+    console.log(qCorrect);
 
 };
 function wrongAn(){
