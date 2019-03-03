@@ -27,7 +27,7 @@ var answers = {
         q1:"Tasmania", q2:"Great Britain", q3:"New Zealand", q4: "Austrailia"
     },
     Senegal: {
-        q1:"Ghana", q2:"Sengal", q3:"South Africa", q4: "Ethiopia"
+        q1:"Ghana", q2:"Senegal", q3:"South Africa", q4: "Ethiopia"
         },
     Syria: {
     q1:"Syria", q2:"Iraq", q3:"Algeria", q4: "Afghanistan"
